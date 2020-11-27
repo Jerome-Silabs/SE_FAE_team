@@ -1,9 +1,12 @@
 
+
+# Modify the callbacks to integrate your application
+
 - Open the file <your_project_name>_callbacks.c. You will find there all the callbacks we set earlier
 
 - 	Add the following lines at the top of the file:
 
-```C
+```c
 #include EMBER_AF_API_NETWORK_CREATOR
 #include EMBER_AF_API_NETWORK_CREATOR_SECURITY
 #include EMBER_AF_API_FIND_AND_BIND_TARGET
@@ -18,7 +21,7 @@ void networkOpeningEventHandler(void);
 
 -	Edit the emberAfMainInitCallback implementation so that it ends like this:
 
-```C
+```c
 void emberAfMainInitCallback(void) {
     emberEventControlSetActive(networkManagementEventControl);
 }
@@ -26,7 +29,7 @@ void emberAfMainInitCallback(void) {
 
 -	Edit the networkManagementEventHandler as follows:
 
-```C
+```c
 void networkManagementEventHandler(void) {
      emberEventControlSetInactive(networkManagementEventControl);
      if (emberAfNetworkState() != EMBER_JOINED_NETWORK) {
@@ -38,7 +41,7 @@ void networkManagementEventHandler(void) {
 
 -	Also, edit the network creator complete callback to have a feedback:
 
-```C
+```c
 void emberAfPluginNetworkCreatorCompleteCallback(const EmberNetworkParameters *network,
                                                  bool usedSecondaryChannels) {
     emberAfCorePrintln("%p network %p: 0x%X",
@@ -51,7 +54,7 @@ void emberAfPluginNetworkCreatorCompleteCallback(const EmberNetworkParameters *n
 We have implemented the network formation part upon reset, now we will program its opening to other devices for joining.
 -	Edit the networkOpeningEventHandler as follows :
 
-```C
+```c
 void networkOpeningEventHandler(void) {
     emberEventControlSetInactive(networkOpeningEventControl);
     if (emberAfNetworkState() == EMBER_JOINED_NETWORK) {
@@ -63,7 +66,7 @@ void networkOpeningEventHandler(void) {
 
 -	Edit the emberAfHalButtonIsrCallback as follows:
 
-```C
+```c
 void emberAfHalButtonIsrCallback(int8u button, int8u state) {
     if (state == BUTTON_RELEASED) {
         emberEventControlSetActive(networkOpeningEventControl);
@@ -73,10 +76,10 @@ void emberAfHalButtonIsrCallback(int8u button, int8u state) {
 
 -	Finally, we will output the ZCL commands received by a remote :
 
-```C
+```c
 /** @brief Window Covering Cluster Window Covering Down Close
  *
- * 
+ *
  *
  */
 boolean emberAfWindowCoveringClusterWindowCoveringDownCloseCallback(void) {
@@ -86,7 +89,7 @@ boolean emberAfWindowCoveringClusterWindowCoveringDownCloseCallback(void) {
 
 /** @brief Window Covering Cluster Window Covering Up Open
  *
- * 
+ *
  *
  */
 boolean emberAfWindowCoveringClusterWindowCoveringUpOpenCallback(void) {
@@ -96,7 +99,7 @@ boolean emberAfWindowCoveringClusterWindowCoveringUpOpenCallback(void) {
 
 /** @brief Window Covering Cluster Window Covering Stop
  *
- * 
+ *
  *
  */
 boolean emberAfWindowCoveringClusterWindowCoveringStopCallback(void) {
@@ -105,14 +108,25 @@ boolean emberAfWindowCoveringClusterWindowCoveringStopCallback(void) {
 }
 ```
 
--	Build and flash the generated binary. Open a terminal on your kit. 
+-	Build and flash the generated binary. Open a terminal on your kit.
 -	Not working? Generate a bootloader project
 -	Unreadable output? Retarget Vcom to enable through hardware configurator
 -	Now, flash the remote-control binary on a second kit, and open a terminal.
 -	Call the following CLI commands on it:
 
 ```Shell
-zcl window up or zcl window down or zcl window stop
+zcl window up
+'''
+or
+'''Shell
+zcl window down
+'''
+or
+'''Shell
+zcl window stop
+'''
+then
+'''Shell
 bsend 1
-See the output on the motor side
-```
+'''
+And look at the output on the motor side
