@@ -1,4 +1,8 @@
 
+---
+sort: 1
+---
+
 # Create a new project
 
 -	Create a new Zigbee 3.0 project

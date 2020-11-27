@@ -1,4 +1,6 @@
-
+---
+sort: 2
+---
 
 # Modify the callbacks to integrate your application
 
@@ -114,19 +116,26 @@ boolean emberAfWindowCoveringClusterWindowCoveringStopCallback(void) {
 -	Now, flash the remote-control binary on a second kit, and open a terminal.
 -	Call the following CLI commands on it:
 
-```Shell
+```console
 zcl window up
 '''
+
 or
-'''Shell
+
+'''console
 zcl window down
 '''
+
 or
-'''Shell
+
+'''console
 zcl window stop
 '''
+
 then
-'''Shell
+
+'''console
 bsend 1
 '''
+
 And look at the output on the motor side
