@@ -118,24 +118,24 @@ boolean emberAfWindowCoveringClusterWindowCoveringStopCallback(void) {
 
 ```console
 zcl window up
-'''
+```
 
 or
 
-'''console
+```console
 zcl window down
-'''
+```
 
 or
 
-'''console
+```console
 zcl window stop
-'''
+```
 
 then
 
-'''console
+```console
 bsend 1
-'''
+```
 
 And look at the output on the motor side
