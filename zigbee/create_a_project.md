@@ -6,7 +6,7 @@
 
 -	In the ISC configuration, in the “ZCL dusters” tab, change “ZCL device type” field of the endpoint 1 device to “HA Window Covering”
 
-<img src="../images/ho1_1.png" alt="" width="500">
+<img src="../images/ho1_1.png" alt="" width="700">
 
 -	To be Zigbee 3.0 compliant, as a Router, you also need to implement the Proxy Basic functionality on Endpoint 242
 
