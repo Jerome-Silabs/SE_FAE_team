@@ -1,0 +1,3 @@
+[submodule "Zigbee/Applications/Z3_RollerShutter"]
+	path = Zigbee/Applications/Z3_RollerShutter
+	url = https://github.com/brian-silabs/Z3_RollerShutter.git
