@@ -1,3 +1,9 @@
-[submodule "zigbee/Z3_RollerShutter"]
-	path = zigbee/Z3_RollerShutter
+[submodule "Zigbee/Applications/Z3_RollerShutter"]
+	path = Zigbee/Applications/Z3_RollerShutter
 	url = https://github.com/brian-silabs/Z3_RollerShutter.git
+[submodule "Zigbee/Applications/Z3_TemperatureSensor"]
+	path = Zigbee/Applications/Z3_TemperatureSensor
+	url = https://github.com/brian-silabs/Z3_TemperatureSensor.git
+[submodule "Zigbee/Applications/Z3_GatewayHost"]
+	path = Zigbee/Applications/Z3_GatewayHost
+	url = https://github.com/brian-silabs/Z3_GatewayHost.git
