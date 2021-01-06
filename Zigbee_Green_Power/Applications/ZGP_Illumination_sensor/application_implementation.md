@@ -115,7 +115,7 @@ void perform_measurement(void)
      appAction = APP_EVENT_ACTION_SEND_REPORT;
    measurement_flag = true;
 
-```
+  ```
 
   . in the regular timer started after node is commissioned to report measurement at a preprogrammed pace.
 
@@ -123,16 +123,16 @@ void perform_measurement(void)
 
   ```c
   static void reportTimeCallback(sl_sleeptimer_timer_handle_t *handle, void *contextData)
-{
-  EmberGpd_t * gpd = emberGpdGetGpd();
-  if (gpd->gpdState >= EMBER_GPD_APP_STATE_OPERATIONAL) {
+   {
+    EmberGpd_t * gpd = emberGpdGetGpd();
+    if (gpd->gpdState >= EMBER_GPD_APP_STATE_OPERATIONAL) {
       perform_measurement();
       appAction = APP_EVENT_ACTION_SEND_REPORT;
-  } else {
-    sl_sleeptimer_stop_timer(handle);
+    } else {
+      sl_sleeptimer_stop_timer(handle);
+    }
   }
-}
-```
+  ```
 
 - now we will adapt the default report frame payload to indicate content is coming from a light sensor. This is done in the sendReport() function.
   command gets the GP_CMD-ATTRIBUTE_REPORTING from the light sensor ID modifications we have done during the project creation (0x11).
