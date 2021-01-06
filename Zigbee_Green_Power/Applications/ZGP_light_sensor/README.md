@@ -1,5 +1,6 @@
-# Zigbee Green Power illumination sensor
-This repository holds documentation and implementation on how to create a Zigbee Green Power sensor (here illumination sensor)  
+# Zigbee Green Power light sensor
+
+This repository holds documentation and implementation on how to create a Zigbee Green Power sensor (here light sensor)  
 
 In order to proceed, you will need to download EmberZNet SDK through Simplicity Studio
 The SDK's access can only be requested using the serial number coming from this development kit :
