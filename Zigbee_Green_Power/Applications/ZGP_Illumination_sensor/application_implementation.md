@@ -153,6 +153,27 @@ void perform_measurement(void)
 
    - finally the Ambient light measurement in little Endian coded bytes.
 
+   ```c
+   static void sendReport(EmberGpd_t * gpd)
+   {
+    gpdDebugPrintf("lux: %d\n", ambLight);
+    uint8_t command[] = {
+              GP_CMD_ATTRIBUTE_REPORTING,
+              0x00, 0x04, // ZCL Cluster Id Illuminance measurement
+              0x00, 0x00, // Attribute Id measured value unsigned int16
+              0x21,       // Attribute Type A- Table 2-10 unsigned 16bits
+              ambLight,ambLight>>8    // Attribute Value LSB byte first as per Zigbee rule
+            };
+    gpd->rxAfterTx = false;
+    emberAfGpdfSend(EMBER_GPD_NWK_FC_FRAME_TYPE_DATA,
+                            gpd,
+                            command,
+                            sizeof(command),
+                            EMBER_AF_PLUGIN_APPS_CMD_RESEND_NUMBER);
+    measurement_flag = false;
+   }
+   ```
+
 
 - The very last modification to the code will be to modify the way commissioning will be operated. in halButtonIsr() we will modify the code to call emberGpdAppSingleEventCommission(); function instead of using the 4 button press process which is default to the example.
 code end up like following:
