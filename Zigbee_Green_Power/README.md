@@ -2,7 +2,7 @@
 sort: 1
 ---
 
-# Applications
+# Zigbee Green Power
 
 {% include list.liquid all=true %}
 
