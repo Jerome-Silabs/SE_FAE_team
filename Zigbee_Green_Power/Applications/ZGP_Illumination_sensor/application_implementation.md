@@ -23,7 +23,7 @@ sort: 2
 ```c
 "${workspace_loc:/${ProjName}/drivers}"
 ```
-<img src="../../images/gpsensor_03.png" alt="" width="700" class="center">
+<img src="../images/gpsensor_03.png" alt="" width="700" class="center">
 
 - in the same way we need to add the Thunderboard Sense 2 (BRD4166A) configuration files support path:
 
