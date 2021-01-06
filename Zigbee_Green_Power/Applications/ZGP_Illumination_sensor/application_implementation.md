@@ -103,8 +103,9 @@ void perform_measurement(void)
 }
 ```
 
-- we will call this function 2 times in the code.
-  . in emberGpdAfPluginMainCallback (the function called after boot) so that if the node is already commissioned to a network and working from energy harvesting, measurement can be done as quickly as possible to immediately issue a report before lacking energy. following code should be placed before the   while (initStatus != SL_STATUS_OK) ; line.
+- we will call this function 2 times in the code:
+
+  - in emberGpdAfPluginMainCallback (the function called after boot) so that if the node is already commissioned to a network and working from energy harvesting, measurement can be done as quickly as possible to immediately issue a report before lacking energy. following code should be placed before the   while (initStatus != SL_STATUS_OK) ; line.
   it calls the the measurement function then tells the stack a report should be sent with the results.
 
   ```c
@@ -117,7 +118,7 @@ void perform_measurement(void)
 
   ```
 
-  . in the regular timer started after node is commissioned to report measurement at a preprogrammed pace.
+  - in the regular timer started after node is commissioned to report measurement at a preprogrammed pace.
 
   modify reportTimeCallback() like this:
 
@@ -137,12 +138,19 @@ void perform_measurement(void)
 - now we will adapt the default report frame payload to indicate content is coming from a light sensor. This is done in the sendReport() function.
   command gets the GP_CMD-ATTRIBUTE_REPORTING from the light sensor ID modifications we have done during the project creation (0x11).
   following data in the command array are:
+
    - target ZCL cluster --> 0x0400 for Illuminance measurements (little Endian coding --> 0x00 0x04)
+
   <img src="../images/gpsensor_06.png" alt="" width="700" class="center">
+
    - Attribute Id for the illuminance measaurement Id is 0x0000 ( same in little Endian!)
+
    <img src="../images/gpsensor_05.png" alt="" width="700" class="center">
+
    - Attribute type coding is unsigned int16  therefore 0x21
+
    <img src="../images/gpsensor_04.png" alt="" width="700" class="center">
+
    - finally the Ambient light measurement in little Endian coded bytes.
 
 
