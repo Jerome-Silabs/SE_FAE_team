@@ -141,15 +141,15 @@ void perform_measurement(void)
 
    - target ZCL cluster --> 0x0400 for Illuminance measurements (little Endian coding --> 0x00 0x04)
 
-  <img src="images/gpsensor_06.png" alt="" width="700" class="center">
+  <img src="images/gpsensor_06.png" alt="" width="350" class="center">
 
    - Attribute Id for the illuminance measaurement Id is 0x0000 ( same in little Endian!)
 
-   <img src="images/gpsensor_05.png" alt="" width="700" class="center">
+   <img src="images/gpsensor_05.png" alt="" width="400" class="center">
 
    - Attribute type coding is unsigned int16  therefore 0x21
 
-   <img src="images/gpsensor_04.png" alt="" width="700" class="center">
+   <img src="images/gpsensor_04.png" alt="" width="350" class="center">
 
    - finally the Ambient light measurement in little Endian coded bytes.
 
