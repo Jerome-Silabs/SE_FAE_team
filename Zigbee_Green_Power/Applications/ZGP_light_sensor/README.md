@@ -21,9 +21,11 @@ To pair and use it, follow the steps described in the section *"Running the exam
 ## Documentation ##
 
 Official Zigbee documentation can be found at our [Developer Documentation](https://docs.silabs.com/zigbee/latest/) page.
+
 Zigbee Green Power:
   - [UG392](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiW8ujrhIruAhVOrxoKHXD-B4wQFjAAegQIBRAC&url=https%3A%2F%2Fwww.silabs.com%2Fdocuments%2Fpublic%2Fuser-guides%2Fug392-using-sl-green-power-with-ezp.pdf&usg=AOvVaw1z-XzjI55_ExlDnChtSArt)
   - [Zigbee pro green power feature](https://zigbeealliance.org/wp-content/uploads/2019/11/docs-09-5499-26-batt-zigbee-green-power-specification.pdf)
+
 Zigbee:
   - [Zigbee Cluster Library](https://zigbeealliance.org/wp-content/uploads/2019/12/07-5123-06-zigbee-cluster-library-specification.pdf)
 
