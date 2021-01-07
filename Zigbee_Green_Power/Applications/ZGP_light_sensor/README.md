@@ -1,5 +1,7 @@
 # Zigbee Green Power light sensor
 
+<img src="images/tutorial_pitch.png" alt="" width="800" class="center">
+
 This repository holds documentation and implementation on how to create a Zigbee Green Power sensor (here light sensor)  
 
 In order to proceed, you will need to download EmberZNet SDK through Simplicity Studio
@@ -16,12 +18,10 @@ It can be commissioned to any Zigbee 3.0 network with a Sink for illuminance mea
 
 To pair and use it, follow the steps described in the section *"Running the example"*
 
-<img src="images/tutorial_pitch.png" alt="" width="800" class="center">
-
 ## Documentation ##
 
 Official Zigbee documentation can be found at our [Developer Documentation](https://docs.silabs.com/zigbee/latest/) page.
-Zigbee Green Power: [UG392] (https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiW8ujrhIruAhVOrxoKHXD-B4wQFjAAegQIBRAC&url=https%3A%2F%2Fwww.silabs.com%2Fdocuments%2Fpublic%2Fuser-guides%2Fug392-using-sl-green-power-with-ezp.pdf&usg=AOvVaw1z-XzjI55_ExlDnChtSArt)
+Zigbee Green Power: [UG392](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiW8ujrhIruAhVOrxoKHXD-B4wQFjAAegQIBRAC&url=https%3A%2F%2Fwww.silabs.com%2Fdocuments%2Fpublic%2Fuser-guides%2Fug392-using-sl-green-power-with-ezp.pdf&usg=AOvVaw1z-XzjI55_ExlDnChtSArt)
 
 ## Disclaimer ##
 
