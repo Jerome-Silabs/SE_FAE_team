@@ -4,7 +4,7 @@ sort: 2
 
 # Modify the callbacks to integrate your application
 
-- Open the file Z3LightGPCombo_gpdisplay_callbacks.c. This is the implementation of the project callbacks interactions.
+- Open Z3LightGPCombo_gpdisplay_callbacks.c. This is the implementation of the project callbacks interactions.
 
 - We have 2 additions to integrate to this project in order to:
   - get the light measurement value
@@ -15,9 +15,7 @@ this is the purpose of emberAfReportAttributesCallback() to enable an action upo
 We will here trigger an update of the display if the cluster Id is the illuminance measurement one (ZCL_ILLUM_MEASUREMENT_CLUSTER_ID).
 As we know reports are organised like this:
 
-      2Bytes        1 Byte              Variable
-
-  Attribute ID  Attribute Data Type   Attribute data
+  Attribute ID (2 bytes)  Attribute Data Type (1 Byte)   Attribute data (variable)
 
 the uint16 illumination measurement is therefore contained in bytes 3 and 4  
 
