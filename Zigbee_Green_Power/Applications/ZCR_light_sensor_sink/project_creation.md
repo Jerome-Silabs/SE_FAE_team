@@ -21,7 +21,7 @@ sort: 1
 
 -	Because we want to be able to commission and get measurements for a light sensor, in the “Clusters” tab, we will need to modify the ZCL device type for endpoint 1. To do this select the endpoint, then select "Zigbee Custom" in the ZCL device type list.
 
-<img src="images/zcrdisplay_005.png" alt="" width="700" class="center">
+<img src="images/zcrdisplay_005.png" alt="" width="800" class="center">
 
 then go to the Measurement & Sensing Clusters to add "Illuminance Measurement". Without this the application would not be able to commission the Green Power sensor and get its measurement values.
 
