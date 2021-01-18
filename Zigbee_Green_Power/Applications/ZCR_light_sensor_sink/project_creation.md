@@ -25,7 +25,7 @@ sort: 1
 
 then go to the Measurement & Sensing Clusters to add "Illuminance Measurement". Without this the application would not be able to commission the Green Power sensor and get its measurement values.
 
-<img src="images/zcrdisplay_006.png" alt="" width="700" class="center">
+<img src="images/zcrdisplay_006.png" alt="" width="500" class="center">
 
 -	Because we created the custom ZCL device cluster in the previous step, we need to ensure all the Network Creator plugins are still in the project. Those are necessary to form the network if the router is not entering an existing network.
 
