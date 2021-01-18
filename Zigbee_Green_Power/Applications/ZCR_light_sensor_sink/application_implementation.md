@@ -16,6 +16,7 @@ We will here trigger an update of the display if the cluster Id is the illuminan
 As we know reports are organised like this:
 
     2Bytes        1 Byte        Variable
+    
   Attribute ID  Attribute Data Type   Attribute data
 
 the uint16 illumination measurement is therefore contained in bytes 3 and 4  
