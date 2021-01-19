@@ -4,7 +4,7 @@ sort: 1
 
 # Create and Configure the new project
 
-## 1- Create the project:
+## Create the project:
 
 Lets start our project from one of the example by clicking on "create New Project" button and select the BRD4180A (EFR32MG21A) Hardware as your target.
 
@@ -17,7 +17,7 @@ Lets start our project from one of the example by clicking on "create New Projec
 <img src="images/zcrdisplay_002.png" alt="" width="700" class="center">
 <img src="images/zcrdisplay_003.png" alt="" width="700" class="center">
 
-## 2- configure the project:
+## Configure the project:
 
 Select the ISC file to start the configuration.
 
@@ -45,7 +45,7 @@ then go to the Measurement & Sensing Clusters to add "Illuminance Measurement". 
 
 <img src="images/zcrdisplay_008.png" alt="" width="600" class="center">  
 
-## 3- generate the project:
+## Generate the project:
 
 At this point we can click on Generate button to finish to create the project and focus on the code implementations.
 

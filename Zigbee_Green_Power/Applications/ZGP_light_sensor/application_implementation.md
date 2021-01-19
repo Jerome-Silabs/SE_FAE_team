@@ -4,7 +4,7 @@ sort: 2
 
 # Modify the callbacks to integrate your application
 
-## 1- Add necessary files/drivers to the project:
+## Add necessary files/drivers to the project:
 
 - to support Si1133 UV and Ambiant light sensor we need to add several files into the project.
   We will first create a directory named "drivers"
@@ -31,7 +31,7 @@ sort: 2
 "${StudioSdkPath}/hardware/kit/EFR32MG12_BRD4166A/config"
 ```
 
-## 2- modify the default callback file with our code:
+## Modify the default callback file with our code:
 
 - Open the file gpd-sensor-callbacks.c. This is the implementation for the default sensor.
 
@@ -198,7 +198,7 @@ void halButtonIsr(uint8_t button, uint8_t state)
 }
 ```
 
-## 3- Compile time:
+## Compile time:
 
 Build and flash the generated binary (be sure to have flashed a bootloader as well!).
 

@@ -4,7 +4,7 @@ sort: 2
 
 # Modify the callbacks to integrate your application
 
-## 1- modify the default callback file with our code:
+## Modify the default callback file with our code:
 
 Open Z3LightGPCombo_gpdisplay_callbacks.c. This is the implementation of the project callbacks interactions.
 
@@ -117,7 +117,7 @@ void updateDisplay (uint16_t value)
 }
 ```
 
-## 2- Compile time:
+## Compile time:
 
 Build and flash the generated binary (be sure to have flashed a bootloader as well!).
 
