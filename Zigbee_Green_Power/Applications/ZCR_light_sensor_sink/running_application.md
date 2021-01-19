@@ -23,6 +23,8 @@ sort: 3
   Z3LightGPComboSoc_gpdisplay>
   ```
 
+you are ready for the next step!
+
 ## Commission the Green Power node (Thunderboard Sense 2)
 
 To follow the steps and exchanges in that demo, you can open a terminal for both boards. Settings are the usual 115200,8,N,1 et it is good to add local echo.
