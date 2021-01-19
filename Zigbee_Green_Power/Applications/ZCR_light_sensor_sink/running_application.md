@@ -83,7 +83,8 @@ plugin green-power-server commission 9 0 0 1
 
 This will open the Light for joining with your GPD. The parameters are:
 
-    Mode Mask 0x0 Leave, 0x1 Commission, 0x8 Proxies, tells the light to enter commissioning mode by itself and also to Broadcast to all devices telling them to be ready to open and find a GP device.
+    Mode Mask 0x0 Leave, 0x1 Commission, 0x8 Proxies
+    --> tells the light to enter commissioning mode by itself and also to Broadcast to all devices telling them to be ready to open and find a GP device.
 
     Green Power Manager (GPM) address for security
 
