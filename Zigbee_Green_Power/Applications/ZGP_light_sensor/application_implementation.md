@@ -174,8 +174,7 @@ void perform_measurement(void)
    }
    ```
 
-
-- The very last modification to the code will be to modify the way commissioning will be operated. in halButtonIsr() we will modify the code to call emberGpdAppSingleEventCommission(); function instead of using the 4 button press process which is default to the example.
+- Optionally and very last modification to the code will be to modify the way commissioning will be operated. in halButtonIsr() we will modify the code to call emberGpdAppSingleEventCommission(); function instead of using the 4 button press process which is default to the example.
 code end up like following:
 
 ```c

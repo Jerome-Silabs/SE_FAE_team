@@ -1,6 +1,6 @@
 # Zigbee Combo Router with SINK for the light sensor
 
-<img src="images/tutorial_pitch.png" alt="" width="800" class="center">
+<img src="images/zcrdisplay_000.png" alt="" width="800" class="center">
 
 This repository holds documentation and implementation on how to create a Zigbee Combo Router with SINK for the ZGP light sensor example  
 
@@ -28,6 +28,9 @@ Zigbee Green Power:
 
 Zigbee:
   - [Zigbee Cluster Library](https://zigbeealliance.org/wp-content/uploads/2019/12/07-5123-06-zigbee-cluster-library-specification.pdf)
+
+Display support:
+  - [Glib Library](https://docs.silabs.com/gecko-platform/latest/middleware/api/group-glib)
 
 ## Disclaimer ##
 
