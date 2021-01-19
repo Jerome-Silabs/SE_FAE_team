@@ -4,7 +4,7 @@ sort: 2
 
 # Modify the callbacks to integrate your application
 
-- Open the file gpd-sensor-callbacks.c. This is the implementation for the default sensor.
+## 1- Add necessary files/drivers to the project:
 
 - to support Si1133 UV and Ambiant light sensor we need to add several files into the project.
   We will first create a directory named "drivers"
@@ -30,7 +30,12 @@ sort: 2
 ```c
 "${StudioSdkPath}/hardware/kit/EFR32MG12_BRD4166A/config"
 ```
-- now we will add the necessary includes and definitions on top of gpd-sensor-callbacks.c, just after the #include already present in the base example:
+
+## 2- modify the default callback file with our code:
+
+- Open the file gpd-sensor-callbacks.c. This is the implementation for the default sensor.
+
+- now we will add the necessary includes and definitions for the Si1133 support on top of gpd-sensor-callbacks.c, just after the #include already present in the base example:
 
 ```c
 #include "em_i2c.h"
@@ -193,4 +198,8 @@ void halButtonIsr(uint8_t button, uint8_t state)
 }
 ```
 
--	Build and flash the generated binary.
+## 3- Compile time:
+
+Build and flash the generated binary (be sure to have flashed a bootloader as well!).
+
+Bootloader can be generated from the Gecko bootloader examples, but if you want to shortcut for this tutorial, you can flash any of the demos before flashing this project's binary. Just avoid erasing the memory as this may erase the bootloader as well.

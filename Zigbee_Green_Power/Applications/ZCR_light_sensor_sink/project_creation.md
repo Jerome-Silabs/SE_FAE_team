@@ -4,7 +4,9 @@ sort: 1
 
 # Create and Configure the new project
 
-- click on "create New Project" button and select the BRD4180A (EFR32MG21A) Hardware as your target.
+## 1- Create the project:
+
+Lets start our project from one of the example by clicking on "create New Project" button and select the BRD4180A (EFR32MG21A) Hardware as your target.
 
 <img src="images/zcrdisplay_001.png" alt="" width="700" class="center">
 
@@ -15,7 +17,11 @@ sort: 1
 <img src="images/zcrdisplay_002.png" alt="" width="700" class="center">
 <img src="images/zcrdisplay_003.png" alt="" width="700" class="center">
 
--	In the ISC configuration, in the “Plugins” tab, select "green Power Sever" and change its "Hidden ZCL Message Proxy Endpoint" to 1 if it was otherwise. This is to solve a problem with the project generating with wrong endpoint. This should be solved in next version.
+## 2- configure the project:
+
+Select the ISC file to start the configuration.
+
+- In the “Plugins” tab, select "green Power Sever" and change its "Hidden ZCL Message Proxy Endpoint" to 1 if it was otherwise. This is to solve a problem with the project generating with wrong endpoint. This should be solved in next version.
 
 <img src="images/zcrdisplay_004.png" alt="" width="800" class="center">
 
@@ -38,6 +44,8 @@ then go to the Measurement & Sensing Clusters to add "Illuminance Measurement". 
 <img src="images/zcrdisplay_007.png" alt="" width="600" class="center">
 
 <img src="images/zcrdisplay_008.png" alt="" width="600" class="center">  
+
+## 3- generate the project:
 
 At this point we can click on Generate button to finish to create the project and focus on the code implementations.
 

@@ -4,7 +4,9 @@ sort: 2
 
 # Modify the callbacks to integrate your application
 
-- Open Z3LightGPCombo_gpdisplay_callbacks.c. This is the implementation of the project callbacks interactions.
+## 1- modify the default callback file with our code:
+
+Open Z3LightGPCombo_gpdisplay_callbacks.c. This is the implementation of the project callbacks interactions.
 
 - We have 2 additions to integrate to this project in order to:
   - get the light measurement value
@@ -114,4 +116,9 @@ void updateDisplay (uint16_t value)
   DMD_updateDisplay();
 }
 ```
--	Build and flash the generated binary.
+
+## 2- Compile time:
+
+Build and flash the generated binary (be sure to have flashed a bootloader as well!).
+
+Bootloader can be generated from the Gecko bootloader examples, but if you want to shortcut for this tutorial, you can flash any of the demos before flashing this project's binary. Just avoid erasing the memory as this may erase the bootloader as well.
