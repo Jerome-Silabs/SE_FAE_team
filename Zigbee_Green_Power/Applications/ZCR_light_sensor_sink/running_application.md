@@ -128,5 +128,7 @@ SinkCommissioningModeCallback(Exit) send returned 0
 .
 Device Announce: 0x5678
 ```    
-What you really want to see is the device announce. This output means that your GPD has paired and your router has made entries for it in its tables. You can test this by pressing PB1 on the Thunderboard, it should triggers the display of the LUX level on the router LCD.
+What you really want to see is the device announce.
+This output means that your GPD has paired and your router has made entries for it in its tables.
+You can test this by pressing PB1 on the Thunderboard, it should triggers the display of the LUX level on the router LCD.
 If you do not see this or PB1 does not triggers the measurement, try pressing the reset button on the Zigbee combo device.
