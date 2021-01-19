@@ -98,19 +98,16 @@ We now move on the Thunderboard and press PB0 4 times waiting at least second be
 <img src="images/zcrdisplay_101.png" alt="" width="200" class="center">
 
 for example:
+  - Press once … wait 1+ second
+  - Press twice … wait 1+ second
+  - Press a third time … wait 1+ second
+  - Press a fourth time … done
 
-    Press once … wait 1+ second
-
-    Press twice … wait 1+ second
-
-    Press a third time … wait 1+ second
-
-    Press a fourth time … done
-
-    Each of these button presses are the following steps:
-    Press 1 – Channel request: To find the channel of the Zigbee network and use use that for commissioning requests
-    Press 2 – Commissioning command: Commissioning request
-    Press 3 – Commissioning command: To collect the commissioning reply Press 4 – Commissioning command: To indicate the successful commissioning
+Each of these button presses are the following steps:
+  -  Press 1 – Channel request: To find the channel of the Zigbee network and use use that for commissioning requests
+  -  Press 2 – Commissioning command: Commissioning request
+  -  Press 3 – Commissioning command: To collect the commissioning reply
+  - Press 4 – Commissioning command: To indicate the successful commissioning
 
 
 On the CLI of Zigbee Combo device, look for an output that looks like the following:
