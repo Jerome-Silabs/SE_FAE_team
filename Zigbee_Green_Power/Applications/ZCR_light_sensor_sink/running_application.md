@@ -115,7 +115,14 @@ Each of these button presses are the following steps:
 On the CLI of Zigbee Combo device, look for an output that looks like the following:
 
 ```  
-GP CN : Saving the GPD Calling Adding TT and Sink gpdCommandClusterEpMap[0].gpdCommand = 32 gpdCommandClusterEpMap[0].endpoints[0] = 1 gpdCommandClusterEpMap[1].gpdCommand = 33 gpdCommandClusterEpMap[1].endpoints[0] = 1 gpdCommandClusterEpMap[2].gpdCommand = 34 gpdCommandClusterEpMap[2].endpoints[0] = 1 SinkCommissioningModeCallback(Exit) send returned 0
+GP CN : Saving the GPD Calling Adding TT and Sink
+gpdCommandClusterEpMap[0].gpdCommand = 32
+gpdCommandClusterEpMap[0].endpoints[0] = 1
+gpdCommandClusterEpMap[1].gpdCommand = 33
+gpdCommandClusterEpMap[1].endpoints[0] = 1
+gpdCommandClusterEpMap[2].gpdCommand = 34
+gpdCommandClusterEpMap[2].endpoints[0] = 1
+SinkCommissioningModeCallback(Exit) send returned 0
 .
 .
 .
