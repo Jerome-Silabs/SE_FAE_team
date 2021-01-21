@@ -6,7 +6,7 @@ sort: 3
 
 ## Setup, commission and application behavior
 
-the full process is provided within the Zigbee light + GP sensor sink available on this [link](../ZCR_light_sensor_sink/runnin_application.md)
+the full process is provided within the Zigbee light + GP sensor sink available on this [link](../ZCR_light_sensor_sink/running_application.html)
 
 indeed this Green Power sensor requires a network to get connected and deliver its data. The network is created by the Zigbee combo node described in the other tutorial at this [link](../ZCR_light_sensor_sink/README.md).
 
