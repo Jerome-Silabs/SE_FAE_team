@@ -55,6 +55,9 @@ after the #include of the file, add:
 
 extern GLIB_Context_t glibContext;          /* Global glib context */
 uint8_t y_position = 20;
+
+void updateDisplay (uint16_t);              /* update display with new sensor value */
+
 ```
 
 Then look for emberAfMainInitCallback() and change it to:
@@ -64,7 +67,6 @@ void emberAfMainInitCallback(void)
 {
   char *line1, *line2;
   EMSTATUS status;
-  uint16_t temp = 155;
 
   line1 = " GREEN POWER ";
   line2 = " SENSOR    ";
