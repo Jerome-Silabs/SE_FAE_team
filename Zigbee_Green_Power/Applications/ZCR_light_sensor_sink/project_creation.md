@@ -25,9 +25,10 @@ Select the ISC file to start the configuration.
 
 <img src="images/zcrdisplay_004.png" alt="" width="800" class="center">
 
--	Because we want to be able to commission and get measurements for a light sensor, in the “Clusters” tab, we will need to modify the ZCL device type for endpoint 1. To do this select the endpoint, then select "Zigbee Custom" in the ZCL device type list.
+-	Because we want to be able to commission and get measurements for a light sensor, in the “Clusters” tab, we will need to modify the ZCL device type for endpoint 1. To do this select the endpoint, then select "Zigbee Custom" in the ZCL device type list. Then select "LO devices" --> "LO Dimmable Light" as your base for the custom cluster as this was the one used in the project before we add our sensor support. This way, all the existing functionalities of the Combo project we start from will be kept (i.e. we will still be able to commission a switch to the node and control its LED).
 
 <img src="images/zcrdisplay_005.png" alt="" width="800" class="center">
+<img src="images/zcrdisplay_0051.png" alt="" width="800" class="center">
 
 then go to the Measurement & Sensing Clusters to add "Illuminance Measurement". Without this the application would not be able to commission the Green Power sensor and get its measurement values.
 
@@ -44,6 +45,15 @@ then go to the Measurement & Sensing Clusters to add "Illuminance Measurement". 
 <img src="images/zcrdisplay_007.png" alt="" width="600" class="center">
 
 <img src="images/zcrdisplay_008.png" alt="" width="600" class="center">  
+
+- As we have integrated the display software support libraries, we need also to enable it and configure it at its hardware point of view. This is done in the HAL tab by opening the hardware configurator. Once the hardware configurator view is opened:
+  - select the "DefaultMode Peripheral" tab
+  - check "SPI Display" in the HAL section
+  - USART2 is automatically selected and linked to the display.
+
+  <img src="images/zcrdisplay_010.png" alt="" width="600" class="center">
+
+  <img src="images/zcrdisplay_011.png" alt="" width="600" class="center">    
 
 ## Generate the project:
 
