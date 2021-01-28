@@ -10,7 +10,7 @@ sort: 2
 
   We will first create a directory named "drivers" in our project by right clicking on the project name in the Project Explorer.
 
-<img src="images/gpsensor_031.png" alt="" width="700" class="center">
+<img src="images/gpsensor_031.png" alt="" width="500" class="center">
 
   Then copy there the following files from the SDK:
   C:\SiliconLabs\SimplicityStudio\v5\developer\sdks\gecko_sdk_suite\v3.1\hardware\kit\common\bsp\thunderboard
