@@ -6,9 +6,12 @@ sort: 2
 
 ## Add necessary files/drivers to the project:
 
-- to support Si1133 UV and Ambiant light sensor we need to add several files into the project.
+- to support Si1133 UV and Ambient light sensor we need to add several files into the project.
 
   We will first create a directory named "drivers" in our project by right clicking on the project name in the Project Explorer.
+
+<img src="images/gpsensor_031.png" alt="" width="700" class="center">
+
   Then copy there the following files from the SDK:
   C:\SiliconLabs\SimplicityStudio\v5\developer\sdks\gecko_sdk_suite\v3.1\hardware\kit\common\bsp\thunderboard
 
@@ -112,8 +115,11 @@ void perform_measurement(void)
 
 - we will call this function 2 times in the code:
 
-  - in emberGpdAfPluginMainCallback (the function called after boot) so that if the node is already commissioned to a network and working from energy harvesting, measurement can be done as quickly as possible to immediately issue a report before lacking energy. following code should be placed before the   while (initStatus != SL_STATUS_OK) ; line.
-  it calls the the measurement function then tells the stack a report should be sent with the results.
+  - in emberGpdAfPluginMainCallback (the function called after boot) so that if the node is already commissioned to a network and working from energy harvesting, measurement can be done as quickly as possible to immediately issue a report before lacking energy.
+
+  Following code should be placed just before the   "while (initStatus != SL_STATUS_OK) ;" line (which should be close to line number 555).
+
+  It calls the the measurement function then tells the stack a report should be sent with the results.
 
   ```c
   perform_measurement();
