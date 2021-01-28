@@ -29,7 +29,9 @@ sort: 2
 "${workspace_loc:/${ProjName}/drivers}"
 ```
 
-You can do this by right clicking on the project name in the Project explorer and selecting "properties" or by going to "File" menu and selecting "properties". Then add the line above into the "GNU ARM C Compiler" --> "Includes" --> "Include Paths" list  with its "+" button above the list. This is shown below.
+You can do this by right clicking on the project name in the Project explorer and selecting "properties" or by going to "File" menu and selecting "properties".
+
+Then add the line above into the "GNU ARM C Compiler" --> "Includes" --> "Include Paths" list  with its "+" button above the list. This is shown below.
 
 <img src="images/gpsensor_03.png" alt="" width="700" class="center">
 
