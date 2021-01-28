@@ -25,6 +25,8 @@ sort: 2
 
 - We also need to add this directory to the project 'C' path to have it taken into account.
 
+You can do this by right clicking on the project name in the Project explorer and selecting "properties" or by going to "File" menu and selecting "properties". 
+
 ```c
 "${workspace_loc:/${ProjName}/drivers}"
 ```
