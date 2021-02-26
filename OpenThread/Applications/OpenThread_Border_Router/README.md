@@ -1,4 +1,4 @@
-# Zigbee Combo Router with SINK for the light sensor
+# OpenThread Border Router setup
 
 <img src="images/zcrdisplay_000.png" alt="" width="800" class="center">
 
