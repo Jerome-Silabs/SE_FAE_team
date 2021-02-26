@@ -2,24 +2,27 @@
 sort: 1
 ---
 
-# OTBR setup on a Rpi4
+# OpenThread Border Router setup on a Rpi4
 
 ## Flash Raspian OS:
 
 Download the [Raspberry Pi OS Lite image](https://www.raspberrypi.org/downloads/raspberry-pi-os/) to a local machine with a built-in or external SD card reader.
+
 Flash the downloaded image on the SDcard with [Balena Etcher](https://www.balena.io/etcher/) if you are using a windows machine. Alternatives exist for Linux and Mac.
--Run balenaEtcher and select the unzipped Raspberry Pi OS image file
--Select the SD card drive
--Finally, click Burn to write the Raspberry Pi OS image to the SD card
--You'll see a progress bar. Once complete, the utility will automatically unmount the SD card so it's safe to remove it from your computer.
+
+- Run balenaEtcher and select the unzipped Raspberry Pi OS image file
+- Select the SD card drive
+- Finally, click Burn to write the Raspberry Pi OS image to the SD card
+- You'll see a progress bar. Once complete, the utility will automatically unmount the SD card so it's safe to remove it from your computer.
 
 Replug the Sdcard and add an empty file to the root of the SDcard disk named "ssh" without any termination. This will allow you to access the RaspberryPi over telnet SSH.
 
-## install OTBR_AGENT_OPTS
+## install the border router engine:
 
 Once you have plugged the Sdcard and powered up the RPi, wait some seconds and connect it from you pc using telnet (RPI ip address is needed port 22)
-login is "pi"
-password is "raspberry"
+
+- login is "pi"
+- password is "raspberry"
 
 Once connected issue the following commands:
 
@@ -42,7 +45,12 @@ Once connected issue the following commands:
 ```
 
 
-add the following line in /etc/default/otbr-agent: OTBR_AGENT_OPTS="-I wpan0 -B eth0 spinel+hdlc+uart:///dev/ttyACM0?uart-baudrate=460800"
+add the following line in /etc/default/otbr-agent:
+
+```
+OTBR_AGENT_OPTS="-I wpan0 -B eth0 spinel+hdlc+uart:///dev/ttyACM0?uart-baudrate=460800"
+```
+
 using
 
 ```
