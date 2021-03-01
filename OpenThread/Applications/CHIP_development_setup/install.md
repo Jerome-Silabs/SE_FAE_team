@@ -49,6 +49,8 @@ Then download and install CHIP.
 > sudo apt-get install git gcc g++ python pkg-config libssl-dev libdbus-1-dev libglib2.0-dev libavahi-client-dev ninja-build python3-venv python3-dev unzip python3-pip
 > git clone --recurse-submodules https://github.com/project-chip/connectedhomeip.git
 > cd connectedhomeip/
+> git checkout 45e86744b3fb642b52f1eadc2654d27bf1c27bd5   --> current stable version
+> git submodule update --init
 > source script/activate.sh
 > source script/bootstrap.sh
 ```

@@ -20,7 +20,7 @@ open a terminal (TeraTerm ) or other to connect to the node CLI
 > dataset commit active
 
 > ifconfig up   
-> thread start  --> start stack and proceed with comissioning using commited dataset
+> thread start  --> start stack and proceed with commissioning using committed dataset
 > ipaddr --> to check node addresses like example below
 	2001:db8:0:0:a313:3b5a:e2bd:314b
 	fdde:ad00:beef:0:0:ff:fe00:fc00
