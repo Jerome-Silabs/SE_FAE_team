@@ -1,7 +1,3 @@
----
-sort: 1
----
-
 # OpenThread Border Router setup
 
 
