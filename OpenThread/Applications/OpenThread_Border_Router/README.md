@@ -1,4 +1,8 @@
-# #1- OpenThread Border Router setup
+---
+sort: 1
+---
+
+# OpenThread Border Router setup
 
 
 
