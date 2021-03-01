@@ -29,7 +29,7 @@ open a terminal (TeraTerm ) or other to connect to the node CLI
 	fe80:0:0:0:a413:e4c7:d91a:2deb
 ```
 
-## tested:
+## test:
 
 Now to check the node is in the network you can reopen telnet session with the OTBR and:
 
