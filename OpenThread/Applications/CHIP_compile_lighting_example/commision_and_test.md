@@ -35,7 +35,8 @@ Now to check the node is in the network you can reopen telnet session with the O
 
 ```
 > sudo ot-ctl
->> child table
+>> child table  
+>> neighbor table
 	--> display the commissioned nodes
 >> ping 2001:db8:0:0:a313:3b5a:e2bd:314b
 	--> should give you a confirmation the node is on the network
