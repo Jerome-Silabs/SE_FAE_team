@@ -1,5 +1,4 @@
-# OpenThread Border Router setup
-
+# CHIP developmnet setup
 
 
 {% include list.liquid all=true %}

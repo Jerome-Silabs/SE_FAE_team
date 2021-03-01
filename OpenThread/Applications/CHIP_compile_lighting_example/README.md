@@ -1,4 +1,4 @@
-# OpenThread Border Router setup
+# Compile Chip lighting example
 
 
 
