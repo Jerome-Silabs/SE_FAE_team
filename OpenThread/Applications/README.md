@@ -9,7 +9,9 @@ sort: 1
 ## Documentation ##
 
 Official documentation can be found at our [Developer Documentation](https://docs.silabs.com/openthread/latest/) page.
+
 OpenThread open source main page is available [here](https://openthread.io/).
+
 Specific OTBR pages are [here](https://openthread.io/guides/border-router).
 
 This section is a summary for a Raspberry Pi 4 install.
