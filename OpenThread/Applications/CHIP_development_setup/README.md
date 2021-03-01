@@ -1,4 +1,4 @@
-# CHIP developmnet setup
+# CHIP development setup
 
 
 {% include list.liquid all=true %}

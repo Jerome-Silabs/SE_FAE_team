@@ -2,6 +2,7 @@
 sort: 1
 ---
 
+
 # Install CHIP development setup on Linux VM
 
 ## Install VirtualBox:
@@ -17,7 +18,7 @@ Once VirtualBox is installed, create a new virtual machine as a Linux Ubuntu 64 
 In case you're installing from the iso, size the VM disk to at least 20GB to have room for the install and CHIP.
 
 
-## Confugure the virtual machine:
+## Configure the virtual machine:
 
 Before running the VM, we need to configure networking setting and change network adapter to Bridge mode.
 
@@ -27,12 +28,12 @@ Before running the VM, we need to configure networking setting and change networ
 - Click OK.
 
 
-## install commander:
+## Install commander:
 
 In order to flash your future binaries, you can optionnaly install commander from its linux link [here](https://www.silabs.com/mcu/programming-options).
 
 
-## install CHIP:
+## Install CHIP:
 
 Update the latest packages by typing following commands in terminal window:
 
