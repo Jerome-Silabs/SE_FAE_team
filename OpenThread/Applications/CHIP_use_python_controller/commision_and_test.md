@@ -41,13 +41,13 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 
 ## Comission node using python programmer :
 
-Now we are going to commission a CHIP lighting-app example to the Thread network.
+Now we are going to commission a CHIP example to the Thread network.
 You can find the procedure to build and flash a light example here:
 https://jerome-silabs.github.io/SE_FAE_team/OpenThread/Applications/CHIP_compile_lighting_example/
 
-Perform a factoryReset on the light node. Example should now be advertising on BLE and ready to be commissioned by our chip device controller.
+Once your chip node is running, prform a factoryReset of the device. Example should now be advertising on BLE and ready to be commissioned by our chip device controller.
  
-Launch chip-device-ctrl by specifying the blueteooth controller in use:
+Launch chip-device-ctrl by specifying the bluetooth controller in use:
 ```
  chip-device-ctrl --bluetooth-adapter=hci0
 ```
@@ -63,13 +63,13 @@ chip-device-ctrl > ble-adapter-select DE:AD:BE:EF:00:00
 
 ```
 
-Start a ble scanning. You should see you Lighging example:
+Start a ble scanning. You should see you Chip example:
 
 ```
 chip-device-ctrl > ble-scan
 2021-03-10 17:40:27,718 ChipBLEMgr   INFO     use default adapter
 2021-03-10 17:40:27,880 ChipBLEMgr   INFO     scanning started
-2021-03-10 17:40:28,495 ChipBLEMgr   INFO     Name            = EFR32_LIGHT
+2021-03-10 17:40:28,495 ChipBLEMgr   INFO     Name            = EFR32_XXXXX
 2021-03-10 17:40:28,495 ChipBLEMgr   INFO     ID              = d558231f-fb05-389c-bae2-6b797b364d28
 2021-03-10 17:40:28,495 ChipBLEMgr   INFO     RSSI            = -34
 2021-03-10 17:40:28,496 ChipBLEMgr   INFO     Address         = 00:0B:57:31:62:49
@@ -96,7 +96,7 @@ In our example:
 chip-device-ctrl > set-pairing-thread-credential 11 0xb434 8a806b4eb634cb342a41a23b603c2a47
 ```
 
-Connect to device using discriminator and setup pin code. Pincode is provided on RTT console of lighting exemple. You can specify here a optionnal nodeId that will be used to send ZCL command later. A random node id will be printed during commisionnig if not specified:
+Connect to device using discriminator and setup pin code. Pincode is provided on RTT console of CHIP example. You can specify here a optionnal nodeId that will be used to send ZCL command later. A random node id will be printed during commisionnig if not specified:
 
 ```
 connect -ble <discriminator> <setup pin code> [<nodeid>]
@@ -112,7 +112,7 @@ chip-device-ctrl > connect -ble 3840 12345678 12121212
 
 Node should now be commissioned on thread network.
 
-At this point you need to confirure IPV6 route to your light node (through OTBR)
+At this point you need to confirure IPV6 route to your CHIP node (through OTBR)
 
 For example :
 
@@ -120,9 +120,9 @@ Assign an IPV6 prefix to interface of your machine
 
 ```
 sudo ifconfig <interface> inet6 add 2002::1/64
+```
 
-
-Create route to the chip node 
+Create routes to the chip node based on OTBR global prefix configured 
 
 ```
 sudo ip route add 2001:db8:0:0::/64 via 2002::2
@@ -135,7 +135,7 @@ At this point you should be able to ping your chip node from your machine
 
 ## Send ZCL command to the node :
 
-You can toggle the led of the example with the following command:
+If you are working on a Light example, you can now toggle the led of the example with the following command:
 
 ```
 > chip-device-ctrl > zcl OnOff Toggle <NodeId> <EndpointId> <GroupId>
@@ -147,3 +147,14 @@ In our example:
 > chip-device-ctrl > zcl OnOff Toggle 12121212 1 0
 ```
  
+If you are working on a Window covering example, you can now close the window covering with the following command:
+
+```
+> chip-device-ctrl > zcl WindowCovering WindowCoveringDownClose <NodeId> <EndpointId> <GroupId>
+```
+
+In our example:
+
+```
+> chip-device-ctrl > zcl WindowCovering WindowCoveringDownClose 12121212 1 0
+```
