@@ -2,7 +2,7 @@
 sort: 4
 ---
 
-# 4- CHIP Python controller compile and use
+# 4- CHIP Python controller install + use
 
 
 
