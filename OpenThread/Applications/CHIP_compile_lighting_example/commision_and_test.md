@@ -2,7 +2,7 @@
 sort: 2
 ---
 
-# Commission the node to the OTBR at thread level:
+# Commission the node to the OTBR at thread level for a test:
 
 This is to test the Thread transport layer is working ok. 
 
