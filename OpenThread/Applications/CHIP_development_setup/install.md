@@ -60,13 +60,6 @@ Then download and install CHIP.
 > cd connectedhomeip/
 ```
 
-options
-
-```
-> git checkout 45e86744b3fb642b52f1eadc2654d27bf1c27bd5   --> current stable version
-> git submodule update --init
-```
-
 Finally
 
 ```
