@@ -1,8 +1,8 @@
 ---
-sort: 5
+sort: 4
 ---
 
-# Python controller usage with Chip example
+# 4- CHIP Python controller compile and use
 
 
 
