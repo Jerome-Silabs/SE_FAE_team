@@ -61,21 +61,29 @@ You can find the procedure to build and flash a light example here:
 [https://jerome-silabs.github.io/SE_FAE_team/OpenThread/Applications/CHIP_compile_lighting_example/](https://jerome-silabs.github.io/SE_FAE_team/OpenThread/Applications/CHIP_compile_lighting_example/)
 
 Once your chip node is running, prform a factoryReset of the device. Example should now be advertising on BLE and ready to be commissioned by our chip device controller.
- 
+
+Find your BLE controller of your machine with the hciconfig command:
+
+```
+$ hciconfig
+
+hci0: 	Type: Primary  Bus: USB
+	BD Address: A0:A8:CD:10:EA:27  ACL MTU: 1021:5  SCO MTU: 96:5
+	UP RUNNING PSCAN ISCAN
+	RX bytes:1437 acl:0 sco:0 events:170 errors:0
+	TX bytes:28144 acl:0 sco:0 commands:169 errors:0
+```
+
 Launch chip-device-ctrl by specifying the bluetooth controller in use:
 ```
- chip-device-ctrl --bluetooth-adapter=hci0
+sudo chip-device-ctrl --bluetooth-adapter=hci0
 ```
-Depending on repository version you might need to use the following command instead:
+
+Depending on repository version you might need to use the following commands instead:
 
 ```
-chip-device-ctrl > ble-adapter-print
-2020-11-23 17:41:53,116 ChipBLEMgr   INFO     adapter 0 = DE:AD:BE:EF:00:00
-2020-11-23 17:41:53,116 ChipBLEMgr   INFO     adapter 1 = DE:AD:BE:EF:01:01
-2020-11-23 17:41:53,116 ChipBLEMgr   INFO     adapter 2 = DE:AD:BE:EF:02:02
-
-chip-device-ctrl > ble-adapter-select DE:AD:BE:EF:00:00
-
+sudo chip-device-ctrl
+chip-device-ctrl > ble-adapter-select A0:A8:CD:10:EA:27
 ```
 
 Start a ble scanning. You should see you Chip example:
