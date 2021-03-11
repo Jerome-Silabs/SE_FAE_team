@@ -135,6 +135,7 @@ At this point you should be able to ping your chip node from your machine
 
 ## Send ZCL command to the node :
 
+### Light Example :
 If you are working on a Light example, you can now toggle the led of the example with the following command:
 
 ```
@@ -147,6 +148,7 @@ In our example:
 > chip-device-ctrl > zcl OnOff Toggle 12121212 1 0
 ```
  
+### Window Covering Example :
 If you are working on a Window covering example, you can now close the window covering with the following command:
 
 ```
