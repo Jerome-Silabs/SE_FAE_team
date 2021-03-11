@@ -7,6 +7,3 @@
 [submodule "Zigbee/Applications/Z3_GatewayHost"]
 	path = Zigbee/Applications/Z3_GatewayHost
 	url = https://github.com/brian-silabs/Z3_GatewayHost.git
-[submodule "OpenThread/Applications/CHIP_CustomizeClusterSupport"]
-	path = OpenThread/Applications/CHIP_CustomizeClusterSupport
-	url = https://github.com/brian-silabs/CHIP_CustomizeClusterSupport.git
