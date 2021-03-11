@@ -54,7 +54,7 @@ sudo ip route add fdde:ad00:beef::/64 via 2002::2
 ```
 Where 2002::2 is IPV6 address of network interface used by your OTBR
 
-## Comission node using python programmer :
+## Commission node using python programmer :
 
 Now we are going to commission a CHIP example to the Thread network.
 You can find the procedure to build and flash a light example here:
