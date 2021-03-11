@@ -1,4 +1,4 @@
-# Compile Chip lighting example
+# Python controller usage with Chip example
 
 
 
