@@ -1,3 +1,7 @@
+---
+sort: 1
+---
+
 # CHIP development setup
 
 
