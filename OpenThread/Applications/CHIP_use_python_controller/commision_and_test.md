@@ -9,8 +9,10 @@ sort: 2
 To commission chip node you will need first channel, panid and masterkey of your existing Thread network. If no network is created follow this procedure:
 https://jerome-silabs.github.io/SE_FAE_team/OpenThread/Applications/OpenThread_Border_Router/install.html
 
+Type the following to retrieve information of you thread network:
+
 ```
- sudo ot-ctl
+pi@raspberrypi:~ $ sudo ot-ctl
 > channel
 11
 > panid
@@ -18,8 +20,24 @@ https://jerome-silabs.github.io/SE_FAE_team/OpenThread/Applications/OpenThread_B
 > masterkey
 8a806b4eb634cb342a41a23b603c2a47
 >ipadrr
+2001:db8:0:0:138e:f869:5848:66be
+fdde:ad00:beef:0:0:ff:fe00:fc00
+fdde:ad00:beef:0:0:ff:fe00:2800
+fdde:ad00:beef:0:cf03:ffc0:3383:5fae
+fe80:0:0:0:49:9a6b:56f9:679f
 
 ```
+
+For route configuration, you will also need IPV6 address used by network interface of your OTBR:
+
+```
+pi@raspberrypi:~ $ ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.22  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::ba27:ebff:fe7d:3049  prefixlen 64  scopeid 0x20<link>
+        inet6 2002::2  prefixlen 64  scopeid 0x0<global>
+```
+
 
 ## Comission node using python programmer :
 
@@ -32,6 +50,17 @@ Perform a factoryReset on the light node. Example should now be advertising on B
 Launch chip-device-ctrl by specifying the blueteooth controller in use:
 ```
  chip-device-ctrl --bluetooth-adapter=hci0
+```
+Depending on repository version you might need to use the following command instead:
+
+```
+chip-device-ctrl > ble-adapter-print
+2020-11-23 17:41:53,116 ChipBLEMgr   INFO     adapter 0 = DE:AD:BE:EF:00:00
+2020-11-23 17:41:53,116 ChipBLEMgr   INFO     adapter 1 = DE:AD:BE:EF:01:01
+2020-11-23 17:41:53,116 ChipBLEMgr   INFO     adapter 2 = DE:AD:BE:EF:02:02
+
+chip-device-ctrl > ble-adapter-select DE:AD:BE:EF:00:00
+
 ```
 
 Start a ble scanning. You should see you Lighging example:
@@ -55,7 +84,7 @@ chip-device-ctrl > ble-scan
 ```
 Put aside the discriminator id. You will need it later.
 
-Set Thread credentials that we retrieved from OTBR:
+Set Thread credentials that we retrieved from OTBR at the top on this procedure:
 
 ```
 chip-device-ctrl > set-pairing-thread-credential <channel> <pan id[HEX]> <master_key>
@@ -67,7 +96,7 @@ In our example:
 chip-device-ctrl > set-pairing-thread-credential 11 0xb434 8a806b4eb634cb342a41a23b603c2a47
 ```
 
-Connect to device using discriminator and setup pin code. Pincode is provided on RTT console of lighting exemple. You can specify here a nodeId that will be used to send ZCL command later:
+Connect to device using discriminator and setup pin code. Pincode is provided on RTT console of lighting exemple. You can specify here a optionnal nodeId that will be used to send ZCL command later. A random node id will be printed during commisionnig if not specified:
 
 ```
 connect -ble <discriminator> <setup pin code> [<nodeid>]
@@ -87,14 +116,22 @@ At this point you need to confirure IPV6 route to your light node (through OTBR)
 
 For example :
 
+Assign an IPV6 prefix to interface of your machine
+
 ```
 sudo ifconfig <interface> inet6 add 2002::1/64
+
+
+Create route to the chip node 
+
+```
 sudo ip route add 2001:db8:0:0::/64 via 2002::2
 sudo ip route add fdde:ad00:beef::/64 via 2002::2
 ```
 
 Where 2002::2 is IPV6 address of network interface used by your OTBR
 
+At this point you should be able to ping your chip node from your machine
 
 ## Send ZCL command to the node :
 
