@@ -1,3 +1,7 @@
+---
+sort: 5
+---
+
 # Python controller usage with Chip example
 
 
