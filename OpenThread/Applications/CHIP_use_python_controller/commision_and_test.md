@@ -7,7 +7,7 @@ sort: 2
 ## Retrieve Thread network information :
 
 To commission chip node you will need first channel, panid and masterkey of your existing Thread network. If no network is created follow this procedure:
-https://jerome-silabs.github.io/SE_FAE_team/OpenThread/Applications/OpenThread_Border_Router/install.html
+[https://jerome-silabs.github.io/SE_FAE_team/OpenThread/Applications/OpenThread_Border_Router/install.html](https://jerome-silabs.github.io/SE_FAE_team/OpenThread/Applications/OpenThread_Border_Router/install.html)
 
 Type the following to retrieve information of you thread network:
 
@@ -43,7 +43,7 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 
 Now we are going to commission a CHIP example to the Thread network.
 You can find the procedure to build and flash a light example here:
-https://jerome-silabs.github.io/SE_FAE_team/OpenThread/Applications/CHIP_compile_lighting_example/
+[https://jerome-silabs.github.io/SE_FAE_team/OpenThread/Applications/CHIP_compile_lighting_example/](https://jerome-silabs.github.io/SE_FAE_team/OpenThread/Applications/CHIP_compile_lighting_example/)
 
 Once your chip node is running, prform a factoryReset of the device. Example should now be advertising on BLE and ready to be commissioned by our chip device controller.
  
