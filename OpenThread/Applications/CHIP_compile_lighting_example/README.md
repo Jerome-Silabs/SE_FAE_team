@@ -2,7 +2,7 @@
 sort: 3
 ---
 
-# Compile Chip lighting example
+# 3- CHIP Compile lighting example
 
 
 
