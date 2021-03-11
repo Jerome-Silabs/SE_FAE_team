@@ -2,7 +2,11 @@
 sort: 2
 ---
 
-# Commission the node to the OTBR:
+# Commission the node to the OTBR at thread level:
+
+This is to test the Thread transport layer is working ok. 
+
+Chip comissioning require a non Thread comissioned device, therefore after this test, the best is to factory reset the device. This will be explained at the end of this page.
 
 ## commission the node :
 
@@ -42,6 +46,14 @@ Now to check the node is in the network you can reopen telnet session with the O
 	--> should give you a confirmation the node is on the network
 ```
 
+## factory reset the node for CHIP:
+
+Chip comissioning require a non Thread comissioned device, therefore after this test, the best is to factory reset the device.
+Command on the node terminal is:
+
+```
+> factoryreset
+```
 
 
 
