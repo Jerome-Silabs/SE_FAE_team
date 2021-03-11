@@ -1,8 +1,8 @@
 ---
-sort: 1
+sort: 2
 ---
 
-# CHIP development setup
+# 2- CHIP development setup
 
 
 {% include list.liquid all=true %}
