@@ -12,7 +12,10 @@ sort: 1
 
 ## Build:
 
+Go to your connectedhomeip repository and launch the following script:
+
 ```
+> cd connectedhomeip
 > sudo scripts/build_python.sh
 ```
 

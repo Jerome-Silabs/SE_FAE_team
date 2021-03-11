@@ -38,6 +38,21 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet6 2002::2  prefixlen 64  scopeid 0x0<global>
 ```
 
+First we are going to confirure IPV6 route to your CHIP node (through OTBR)
+
+Assign an IPV6 prefix to interface of your machine
+
+```
+sudo ifconfig <interface> inet6 add 2002::1/64
+```
+
+Create routes to the chip node based on OTBR global prefix configured 
+
+```
+sudo ip route add 2001:db8:0:0::/64 via 2002::2
+sudo ip route add fdde:ad00:beef::/64 via 2002::2
+```
+Where 2002::2 is IPV6 address of network interface used by your OTBR
 
 ## Comission node using python programmer :
 
@@ -112,23 +127,3 @@ chip-device-ctrl > connect -ble 3840 12345678 12121212
 
 Node should now be commissioned on thread network.
 
-At this point you need to confirure IPV6 route to your CHIP node (through OTBR)
-
-For example :
-
-Assign an IPV6 prefix to interface of your machine
-
-```
-sudo ifconfig <interface> inet6 add 2002::1/64
-```
-
-Create routes to the chip node based on OTBR global prefix configured 
-
-```
-sudo ip route add 2001:db8:0:0::/64 via 2002::2
-sudo ip route add fdde:ad00:beef::/64 via 2002::2
-```
-
-Where 2002::2 is IPV6 address of network interface used by your OTBR
-
-At this point you should be able to ping your chip node from your machine
