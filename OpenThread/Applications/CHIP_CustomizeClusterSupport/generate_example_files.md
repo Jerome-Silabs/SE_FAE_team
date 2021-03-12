@@ -39,9 +39,15 @@ Open the ZAP Tool UI:
 ``` console
 npm run zap
 ```
+Note:
+If some node modules are missing (i.e. cross-spwan) install it locally using npm
+
+```console
+npm install cross-spawn
+```
+
 Open the .zap file you want to edit (make sure to make a copy first, otherwise git is your friend)
 <img src="./images/01_generate-example-files_ZAPUI.png" alt="" width="500" class="center">
-
 
 ## Generate the new sources 
 
