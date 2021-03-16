@@ -4,6 +4,24 @@ sort: 1
 
 # OpenThread Border Router setup on a Rpi4
 
+## Prepare the RCP
+
+To be able to run the Open Thread border router, you'll need to connect the Rpi4 with an evaluation kit programmed with an RCP image (Radio Co Processor running the 802.15.4 MAC+spinel).
+
+To achieve that, you can program a thunderboard sense 2 (BRD4166A) or a WSTK + radioboard (BRD4161A for example).
+
+ - connect the EVB to the pc first
+ - launch Simplicity Studio v5
+ - select the board in the adapter list
+ - select Example Projects $ Demos
+ - select Thread in the technology type list
+ - select only demos to be displayed
+ - then click on RUN in the ot-rcp tile
+ - you're done!
+
+now you can connect the kit to the RPI4. it will be connected on ttyACM0.
+
+
 ## Flash Raspian OS:
 
 Download the [Raspberry Pi OS Lite image](https://www.raspberrypi.org/downloads/raspberry-pi-os/) to a local machine with a built-in or external SD card reader.
