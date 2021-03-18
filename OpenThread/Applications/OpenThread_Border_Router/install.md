@@ -53,29 +53,21 @@ Once connected issue the following commands:
 > git clone https://github.com/openthread/ot-br-posix
 ```
 
+if you compiled the RCP from SDK 3.1 you should align the border router commit as indicated in the [release file](https://www.silabs.com/documents/public/release-notes/open-thread-release-notes-1.1.1.0.pdf):
+
+```
+> git checkout a37e299ff
+```
+
+then build the border router:
+
 ```
 > cd ot-br-posix
 > ./script/bootstrap
-```
-
-```
 > NETWORK_MANAGER=0 ./script/setup
 ```
 
-
-add the following line in /etc/default/otbr-agent:
-
-```
-OTBR_AGENT_OPTS="-I wpan0 -B eth0 spinel+hdlc+uart:///dev/ttyACM0?uart-baudrate=460800"
-```
-
-using
-
-```
-> sudo vi /etc/default/otbr-agent
-```
-
-then
+finally:
 
 ```
 > sudo reboot now
