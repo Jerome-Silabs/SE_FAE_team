@@ -1,8 +1,8 @@
 ---
-sort: 6
+sort: 5
 ---
 
-# 6- Adding BLE OTA to a CHIP example
+# 5- Adding BLE OTA to a CHIP example
 
 
 
