@@ -12,6 +12,7 @@ BRD4170A is both 2.4GHz and 915MHz. Examples compiled below will support both fr
 This is an EFR32MG12 based radio board.
 
 SubG channels are 1 to 10
+
 2.4G channels are 11 to 26
 
 ## compiling the examples:
