@@ -2,7 +2,7 @@
 sort: 1
 ---
 
-# OpenThread
+# OpenThread subGigaHz
 
 {% include list.liquid all=true %}
 
