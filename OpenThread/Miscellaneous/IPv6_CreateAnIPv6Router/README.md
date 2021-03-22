@@ -2,7 +2,7 @@
 sort: 1
 ---
 
-# IPv6 Create an IPv6 Router
+# IPv6 - Create an IPv6 Router
 This repository aims to explain how to create an IPv6 router that can:
 * Advertise prefixes on several interfaces
 * Route accross its interfaces

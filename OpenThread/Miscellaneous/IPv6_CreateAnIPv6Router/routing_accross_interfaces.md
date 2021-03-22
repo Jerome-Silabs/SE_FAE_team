@@ -59,9 +59,7 @@ At this point:
   * However no device on the same LAN as eth0 can ping a Thread device
 
 
-FIGURE 1
-<img src="./images/RoutingPartial.png" alt="" width="500" class="center">
-
+<img src="./images/RoutingPartial.png" alt="" width="900" class="center">
 
 
 
@@ -83,41 +81,40 @@ And again radvd will be our best fit here:
 
 * Open radvd's configuration file at */etc/radvd.conf*
 * Within the eth0 configuration, add a new entry called route as follows:
-
-```sh
-route 2001:db8::/64
-{
-};
-```
-
-The final file should now look like this :
-```sh
-interface eth0
-{
-  AdvSendAdvert on; 
-  MaxRtrAdvInterval 30; 
-  AdvManagedFlag on; 
-  AdvOtherConfigFlag on;
-
-  prefix fd50:43e1:cede:4587::/64
-  {
-                AdvOnLink on;
-                AdvAutonomous on;
-  };
-
+  ```sh
   route 2001:db8::/64
   {
   };
+  ```
 
-};
-```
+  The final file should now look like this :
+  ```sh
+  interface eth0
+  {
+    AdvSendAdvert on; 
+    MaxRtrAdvInterval 30; 
+    AdvManagedFlag on; 
+    AdvOtherConfigFlag on;
+
+    prefix fd50:43e1:cede:4587::/64
+    {
+                  AdvOnLink on;
+                  AdvAutonomous on;
+    };
+
+    route 2001:db8::/64
+    {
+    };
+
+  };
+  ```
 * Restart the daemon :
-```console
- sudo systemctl stop radvd.service
- sudo systemctl start radvd.service
-```
+  ```console
+  sudo systemctl stop radvd.service
+  sudo systemctl start radvd.service
+  ```
 
 At this point, radvd will also be advertising the route to our Thread interface on eth0
 This will allow all our devices on our LAN to communicate with the Thread devices
 
-<img src="./images/Routing.png" alt="" width="500" class="center">
+<img src="./images/Routing.png" alt="" width="900" class="center">
