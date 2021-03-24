@@ -8,7 +8,7 @@ GATT of chip example is defined at this location "connectedhomeip\src\platform\E
 GATT already include OTA service. You should be able to see OTA service in EFR connect application when device is not provisionned yet.
 
 
-#Add necessary files
+# Add necessary files
 
 3 files are necessary for OTA
  - application_properties.c
@@ -42,7 +42,7 @@ source_set(sdk_target_name) {
 ...
 ```
 
-#Edit linker script to add Apploader
+# Edit linker script to add Apploader
 
 Linker scripts are located in the example project folders: "connectedhomeip\examples\xxxx-app\efr32\ldscripts"
 
@@ -119,7 +119,7 @@ case sl_bt_evt_connection_closed_id:
   break;
 ```
 
-#Creating GBL file
+# Creating GBL file
 
 
 Create a variable to the output folder 
@@ -141,5 +141,5 @@ commander gbl create $OTA_OUTPUT_DIR/xxx-example.gbl --app $OTA_OUTPUT_DIR/xxx-e
 ```
 
 
-#Flash a bootloader to your device
+# Flash a bootloader to your device
 
