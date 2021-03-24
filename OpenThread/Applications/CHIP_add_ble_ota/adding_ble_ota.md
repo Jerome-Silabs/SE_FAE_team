@@ -6,16 +6,21 @@ sort: 1
 
 ## GATT configuration :
 
-GATT of chip example is available at this location "connectedhomeip\src\platform\EFR32\gatt.xml"
+GATT of chip example is defined at this location "connectedhomeip\src\platform\EFR32\gatt.xml"
+GATT already include OTA service. You should be able to see OTA service in EFR connect application when device is not provisionned yet.
 
-GATT already include OTA service. You should be able to see OTA service in EFR connect application.
 
-## Adding apploader and application_properties.c
+##Adding necessary files
 
-Apploader is already part of build file.
+3 files are necessary for OTA
+ - application_properties.c
+ - application_properties.h
+ - binapploader.o
 
+Apploader is already part of build file. So you don't need to add it. Apploader is a minimal BLE stack that will allow "in place" OTA update.
+
+application_properties.c
 Add app_properties.c to "connectedhomeip/third_party/efr32_sdk/efr32_sdk.gni" file.
-
 Add "${efr32_sdk_root}/platform/bootloader/api" folder that contains application_properties.h to "connectedhomeip/third_party/efr32_sdk/efr32_sdk.gni" include_dirs section.
 
 ```
@@ -39,7 +44,7 @@ source_set(sdk_target_name) {
 ...
 ```
 
-## Edit linker script to add Apploader
+##Edit linker script to add Apploader
 
 Linker scripts are located in the example project folders: "connectedhomeip\examples\xxxx-app\efr32\ldscripts"
 
@@ -72,11 +77,11 @@ On EFR32MG12, Apploader is located at address 0x0 since bootloader is stored in 
 ![](mmapEFR32MG21.JPG?raw=true "Memory Mapping of EFR32MG21")
 
 
-## Modify BLE event manager to add OTA
+## Modify BLE event manager to add OTA 
 
 BLE event management is done in file: connectedhomeip\src\platform\EFR32\BLEManagrImpl.cpp
 
-We need to add
+We need to add 
 
 ```
 // This event indicates that a remote GATT client is attempting to write
@@ -115,3 +120,28 @@ case sl_bt_evt_connection_closed_id:
   }
   break;
 ```
+
+##Creating GBL
+
+
+Create a variable to the output folder 
+
+```
+export OTA_OUTPUT_DIR=/path/to/your/output/
+```
+
+We are going to extract text section that contains our new CHIP application and convert it to an SREC file:
+
+```
+arm-none-eabi-objcopy -O srec -R .text_apploader -R .text_signature  $OTA_OUTPUT_DIR/chip-efr32-xxx-example.out  $OTA_OUTPUT_DIR/xxx-example.srec
+```
+
+Then we are going to create a GBL file based on this text section:
+
+```
+commander gbl create $OTA_OUTPUT_DIR/xxx-example.gbl --app $OTA_OUTPUT_DIR/xxx-example.srec 
+```
+
+
+##Flash a bootloader to your device
+
