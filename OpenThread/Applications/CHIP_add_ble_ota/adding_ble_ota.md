@@ -2,15 +2,13 @@
 sort: 1
 ---
 
-# Adding BLE OTA update feature to Chip node:
-
-## GATT configuration :
+# GATT configuration :
 
 GATT of chip example is defined at this location "connectedhomeip\src\platform\EFR32\gatt.xml"
 GATT already include OTA service. You should be able to see OTA service in EFR connect application when device is not provisionned yet.
 
 
-##Adding necessary files
+#Add necessary files
 
 3 files are necessary for OTA
  - application_properties.c
@@ -44,7 +42,7 @@ source_set(sdk_target_name) {
 ...
 ```
 
-##Edit linker script to add Apploader
+#Edit linker script to add Apploader
 
 Linker scripts are located in the example project folders: "connectedhomeip\examples\xxxx-app\efr32\ldscripts"
 
@@ -77,7 +75,7 @@ On EFR32MG12, Apploader is located at address 0x0 since bootloader is stored in 
 ![](mmapEFR32MG21.JPG?raw=true "Memory Mapping of EFR32MG21")
 
 
-## Modify BLE event manager to add OTA 
+# Modify BLE event manager to add OTA 
 
 BLE event management is done in file: connectedhomeip\src\platform\EFR32\BLEManagrImpl.cpp
 
@@ -121,7 +119,7 @@ case sl_bt_evt_connection_closed_id:
   break;
 ```
 
-##Creating GBL
+#Creating GBL file
 
 
 Create a variable to the output folder 
@@ -143,5 +141,5 @@ commander gbl create $OTA_OUTPUT_DIR/xxx-example.gbl --app $OTA_OUTPUT_DIR/xxx-e
 ```
 
 
-##Flash a bootloader to your device
+#Flash a bootloader to your device
 
