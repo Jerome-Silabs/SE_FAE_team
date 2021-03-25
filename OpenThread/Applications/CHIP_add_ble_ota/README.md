@@ -6,8 +6,7 @@ sort: 6
 
 ## GATT configuration
 
-GATT of chip examples is defined at this location "connectedhomeip\src\platform\EFR32\gatt.xml"
-GATT already include OTA service. You should be able to see OTA service in EFR connect application when device is not provisionned yet.
+GATT of chip examples is defined at this location **"connectedhomeip\src\platform\EFR32\gatt.xml"**. GATT already include OTA service. You should be able to see OTA service in EFR connect application when device is not provisionned yet.
 
 
 ## Add necessary files
