@@ -2,7 +2,7 @@
 sort: 6
 ---
 
-# 6- Adding BLE OTA to a CHIP example  (not stable)
+# 6- Adding BLE OTA to a CHIP example
 
 
 

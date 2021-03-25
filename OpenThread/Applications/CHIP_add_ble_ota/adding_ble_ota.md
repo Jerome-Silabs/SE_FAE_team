@@ -1,10 +1,6 @@
----
-sort: 1
----
-
 # GATT configuration :
 
-GATT of chip example is defined at this location "connectedhomeip\src\platform\EFR32\gatt.xml"
+GATT of chip examples is defined at this location "connectedhomeip\src\platform\EFR32\gatt.xml"
 GATT already include OTA service. You should be able to see OTA service in EFR connect application when device is not provisionned yet.
 
 
@@ -15,11 +11,26 @@ GATT already include OTA service. You should be able to see OTA service in EFR c
  - application_properties.h
  - binapploader.o
 
-Apploader is already part of build file. So you don't need to add it. Apploader is a minimal BLE stack that will allow "in place" OTA update.
+**Apploader** is already part of build file. So you don't need to add it. Apploader is a minimal BLE stack that will allow "in place" OTA update.
 
-application_properties.c
-Add app_properties.c to "connectedhomeip/third_party/efr32_sdk/efr32_sdk.gni" file.
-Add "${efr32_sdk_root}/platform/bootloader/api" folder that contains application_properties.h to "connectedhomeip/third_party/efr32_sdk/efr32_sdk.gni" include_dirs section.
+**application_properties.c** file must be added to your chip example build file. This file contains properties of the application that can be accessed by the bootloader. The structure contained in this file is necessary for OTA. Add **application_properties.c** file to **src** repository of you example and add the following line to **BUILD.gn** file:
+
+```
+ sources = [
+    "${examples_plat_dir}/LEDWidget.cpp",
+    "${examples_plat_dir}/Service.cpp",
+    "${examples_plat_dir}/init_efrPlatform.cpp",
+    "src/AppTask.cpp",
+    "src/ButtonHandler.cpp",
+    "src/LightingManager.cpp",
+    "src/ZclCallbacks.cpp",
+    "src/main.cpp",
+    "src/application_properties.c",
+  ]
+
+```
+
+For **application_properties.h**, add **"${efr32_sdk_root}/platform/bootloader/api"** folder that contains application_properties.h to **"connectedhomeip/third_party/efr32_sdk/efr32_sdk.gni"** include_dirs section.
 
 ```
 _include_dirs = [
@@ -31,21 +42,9 @@ _include_dirs = [
 
 ```
 
-This file contains properties of the application that can be accessed by the bootloader. The strcuture contained in this file is necessary for OTA.
+# Modify linker script to add Apploader
 
-```
-source_set(sdk_target_name) {
-    sources = [
-      "application_properties.c",
-      "${chip_root}/third_party/mbedtls/repo/include/mbedtls/platform.h",
-      "${efr32_sdk_root}/hardware/kit/common/bsp/bsp_bcc.c",
-...
-```
-
-# Edit linker script to add Apploader
-
-Linker scripts are located in the example project folders: "connectedhomeip\examples\xxxx-app\efr32\ldscripts"
-
+Linker script is located in the example project folders: **"connectedhomeip\examples\xxxx-app\efr32\ldscripts"**
 
 For EFR32MG21, add the following section before .text section:
 
@@ -65,21 +64,39 @@ SECTIONS
   {
 ```
 
-FLASH (rx) : ORIGIN = 0x00004000, LENGTH = 1048576 - 8192 - 0x4000  /* 8K is reserved at top of flash on MG21 */
-
 For EFR32MG12, add the following section before .text section:
 
+```
+SECTIONS
+{
+  .text_apploader :
+  {
+    KEEP(*(.binapploader*))
+  } > FLASH
+  .text_signature :
+  {
+    . = ALIGN(2048);
+  } > FLASH
 
-On EFR32MG12, Apploader is located at address 0x0 since bootloader is stored in a dedicated region. On EFR32MG21, Apploader is located at address 0x4000 because bootloader use address range 0x0-0x4000
+ .text :
+  {
+```
 
-![](mmapEFR32MG21.JPG?raw=true "Memory Mapping of EFR32MG21")
+For OTA we will need a bootloader. On EFR32MG12, Apploader is located at address 0x0 since bootloader is stored in a dedicated region. On EFR32MG21, Apploader is located at address 0x4000 because bootloader use address range 0x0-0x4000
+For this reason on EFR32MG21, you need to change the Flash region origin:
+
+```
+FLASH (rx) : ORIGIN = 0x00004000, LENGTH = 1048576 - 8192  /* 8K is reserved at top of flash on MG21 */
+```
+
+![Memory Mapping of EFR32MG21](mmapEFR32MG21.JPG?raw=true "Memory Mapping of EFR32MG21")
 
 
 # Modify BLE event manager to add OTA 
 
-BLE event management is done in file: connectedhomeip\src\platform\EFR32\BLEManagrImpl.cpp
+BLE event management is located in this file:**connectedhomeip\src\platform\EFR32\BLEManagrImpl.cpp**
 
-We need to add 
+We need to add the **sl_bt_evt_gatt_server_user_write_request_id** event:
 
 ```
 // This event indicates that a remote GATT client is attempting to write
@@ -87,59 +104,82 @@ We need to add
 case sl_bt_evt_gatt_server_user_write_request_id:
   // If user-type OTA Control Characteristic was written, boot the device
   // into Device Firmware Upgrade (DFU) mode.
-  if (evt->data.evt_gatt_server_user_write_request.characteristic
+  if (bluetooth_evt->data.evt_gatt_server_user_write_request.characteristic
       == gattdb_ota_control) {
     // Set flag to enter OTA mode.
     boot_to_dfu = true;
     // Send response to user write request.
     sc = sl_bt_gatt_server_send_user_write_response(
-      evt->data.evt_gatt_server_user_write_request.connection,
+      bluetooth_evt->data.evt_gatt_server_user_write_request.connection,
       gattdb_ota_control,
       SL_STATUS_OK);
-    sl_app_assert(sc == SL_STATUS_OK,
-                  "[E: 0x%04x] Failed to send response to user write request\n",
-                  (int)sc);
+    if (sc != SL_STATUS_OK)
+      ChipLogProgress(DeviceLayer, "[E: 0x%04x] Failed to send response to user write request\n", (int)sc);
     // Close connection to enter to DFU OTA mode
     sc = sl_bt_connection_close(
-      evt->data.evt_gatt_server_user_write_request.connection);
-    sl_app_assert(sc == SL_STATUS_OK,
-                  "[E: 0x%04x] Failed to close connection to enter to DFU OTA mode\n",
-                  (int)sc);
+      bluetooth_evt->data.evt_gatt_server_user_write_request.connection);
+    if (sc != SL_STATUS_OK)
+      ChipLogProgress(DeviceLayer, "[E: 0x%04x] Failed to close connection to enter to DFU OTA mode\n", (int)sc);
   }
   break;
 
-// -------------------------------
-// This event indicates that a connection was closed.
-case sl_bt_evt_connection_closed_id:
-  // Check if need to boot to OTA DFU mode.
-  if (boot_to_dfu) {
-    // Reset MCU and enter OTA DFU mode.
-    sl_bt_system_reset(2);
-  }
-  break;
 ```
 
-# Creating GBL file
+And to modify existing **sl_bt_evt_connection_closed_id event**: 
+
+```
+case sl_bt_evt_connection_closed_id: {
+    // Check if need to boot to OTA DFU mode.
+    if (boot_to_dfu) {
+      // Reset MCU and enter OTA DFU mode.
+      sl_bt_system_reset(2);
+      break;
+    }
+    sInstance.HandleConnectionCloseEvent(bluetooth_evt);
+}
+break;
+```
 
 
-Create a variable to the output folder 
+You should normally be able to compile your example now. 
+Flash your binary to your device. 
+
+**You also need at this point to flash a bootloader in your device**
+
+
+# Creating GBL file and testing OTA
+
+
+The next step is the creation of a GBL that will contain an updated version of your chip application
+
+To easily validate that your OTA procedure is successful, you can modify advertising name of your CHIP example.
+Change advertise name in **src/main.cpp**
+
+
+```
+chip::DeviceLayer::ConnectivityMgr().SetBLEDeviceName("EFR32_LIGHT_UPDATED");
+
+```
+Compile this updated example.
+
+To create your GBL file, first, create a variable to your CHIP output folder 
 
 ```
 export OTA_OUTPUT_DIR=/path/to/your/output/
 ```
 
-We are going to extract text section that contains our new CHIP application and convert it to an SREC file:
+Then, extract text section that contains our new CHIP application and convert it to a SREC file:
 
 ```
 arm-none-eabi-objcopy -O srec -R .text_apploader -R .text_signature  $OTA_OUTPUT_DIR/chip-efr32-xxx-example.out  $OTA_OUTPUT_DIR/xxx-example.srec
 ```
 
-Then we are going to create a GBL file based on this text section:
+Then we are going to create a GBL file based on this SREC file:
 
 ```
 commander gbl create $OTA_OUTPUT_DIR/xxx-example.gbl --app $OTA_OUTPUT_DIR/xxx-example.srec 
 ```
 
+You can now send this GBL file to your CHIP device with EFR connect application.
 
-# Flash a bootloader to your device
 
