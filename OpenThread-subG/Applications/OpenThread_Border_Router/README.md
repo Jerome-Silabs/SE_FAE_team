@@ -4,9 +4,7 @@ sort: 1
 
 # 1- OpenThread Border Router setup
 
-
-
-{% include list.liquid all=true %}
+refer to this [page](https://jerome-silabs.github.io/SE_FAE_team/OpenThread/Applications/OpenThread_Border_Router/install.html).
 
 ## Description ##
 
