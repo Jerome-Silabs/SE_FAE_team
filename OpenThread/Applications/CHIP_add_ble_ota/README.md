@@ -190,6 +190,8 @@ You should now be able to send this GBL file to your CHIP device with EFR connec
 
 ## Documentation ##
 
+OTA documentation [here](https://docs.silabs.com/bluetooth/latest/general/firmware-upgrade/uploading-firmware-images-using-ota-dfu)
+
 Official documentation can be found at our [Developer Documentation](https://docs.silabs.com/openthread/latest/) page.
 
 OpenThread open source main page is available [here](https://openthread.io/).
