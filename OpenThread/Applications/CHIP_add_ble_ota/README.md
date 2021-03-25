@@ -100,7 +100,7 @@ This is memory mapping of EFR32MG21:
 
 ## Modify BLE event manager to add OTA 
 
-BLE event management is located in this file: **connectedhomeip\src\platform\EFR32\BLEManagrImpl.cpp**
+BLE event management is located in this file: **connectedhomeip\src\platform\EFR32\BLEManagerImpl.cpp**
 
 We need to add the **sl_bt_evt_gatt_server_user_write_request_id** event:
 
